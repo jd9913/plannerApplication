@@ -8,3 +8,13 @@ With the planner, I can do the following things:
 - clicking in a time block will allow me to enter an event
 - clicking a save button will save the event in local storage
 - the saved events persist even when page is saved
+
+## Live URL:
+
+https://jd9913.github.io/plannerApplication/.
+
+
+## Repository URL:
+
+https://github.com/jd9913/plannerApplication
+
