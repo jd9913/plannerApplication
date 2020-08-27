@@ -1,4 +1,4 @@
-# plannerApplication
+# Daily Planner Application
 create a daily planner schedule as an exercise in JQuery, Bootstrap and Javascript
 
 With the planner, I can do the following things:
