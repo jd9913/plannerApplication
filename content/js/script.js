@@ -61,110 +61,101 @@ let workDay = [
 
 const containerEl = document.getElementById('#container');
 const initRow = document.getElementsByClassName("row");
-let taskList = JSON.parse(localStorage.getItem("my_workDay")) || [];
 
 
-$(document).ready(function () {
 
-    console.log("ready!");
+$(document).ready(
+    function () {
 
-  
-
-    //get the current date and place it in the header
-    function getCurrentDay() {
-        const currentDay = moment().format('dddd, MMMM Do, YYYY');
-        $('#currentDay').text(currentDay);
-    }
-    console.log(currentDay);
+        console.log("ready!");
 
 
-    //place the current day/date in the header field
 
-    getCurrentDay();
-
-      
-    //create the visual, dynamic grid for the daily planner
-
-
-    workDay.forEach(function (eachHour) {
-        
-
-            
-            //These create the row and place the time and save buttons in the appropriate places for each row.
-            const begInput = $("<div>").attr({ "class": "input-group" });
-            $(initRow).append(begInput);
-
-            const eachRow = $("<div>").attr({ "class": "input-group-prepend col-sm" });
-            $(begInput).append(eachRow);
-
-            const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(eachHour.hour);
-            $(eachRow).append(eachTime);
-
-            let textArea = $('<textarea>').attr({ "class": "form-control" });
-            $(eachTime).append(textArea);
-
-            const saveBtn = $('<div>').attr({ "class": "input-group-append" });
-            $(eachTime).append(saveBtn);
-
-            const actButton = $('<button>').attr({ "class": "btn saveBtn" })
-            $(saveBtn).append(actButton);
-
-            const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
-            $(actButton).append(saveIcon);
-
-        
-  
-
-        //tests the time and applies formatting to the cell based on the time
-
-        if (eachHour.hour < moment().format("HHHH")) {
-            textArea.attr({
-                "class": "form-control past"
-            })
-        } else if (eachHour.hour === moment().format("HHHH")) {
-            textArea.attr({
-                "class": "form-control present"
-            })
-        } else if (eachHour.hour > moment().format("HHHH")) {
-            textArea.attr({
-                "class": "form-control future"
-            })
+        //get the current date and place it in the header
+        function getCurrentDay() {
+            const currentDay = moment().format('dddd, MMMM Do, YYYY');
+            $('#currentDay').text(currentDay);
         }
+        console.log(currentDay);
 
-    
-        //allows values to be placed within the property workDay.taskItem
 
-       /* workDay.taskItem = new function () {
-            this[taskItem] = textArea;
-            taskList.push(workDay.taskItem);   
-        }*/
-                             
-   
-        
+        //place the current day/date in the header field
+
+        getCurrentDay();
+
+
+        //create the visual, dynamic grid for the daily planner
+
+
+        workDay.forEach(
+            function (eachHour) {
+
+                //These create the row and place the time and save buttons in the appropriate places for each row.
+                const begInput = $("<div>").attr({ "class": "input-group" });
+                $(initRow).append(begInput);
+
+                const eachRow = $("<div>").attr({ "class": "input-group-prepend col-sm" });
+                $(begInput).append(eachRow);
+
+                const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(eachHour.hour);
+                $(eachRow).append(eachTime);
+
+                let textArea = $('<textarea>').attr({ "class": "form-control", "id": eachHour.taskItem });
+                $(eachTime).append(textArea);
+
+                const saveBtn = $('<div>').attr({ "class": "input-group-append", });
+                $(eachTime).append(saveBtn);
+
+                const actButton = $('<button>').attr({ "class": "btn saveBtn", "id": eachHour.id })
+                $(saveBtn).append(actButton);
+
+                const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
+                $(actButton).append(saveIcon);
+
+
+
+                //tests the time and applies formatting to the cell based on the time
+
+                if (eachHour.hour < moment().format("HHHH")) {
+                    textArea.attr({
+                        "class": "form-control past"
+                    })
+                } else if (eachHour.hour === moment().format("HHHH")) {
+                    textArea.attr({
+                        "class": "form-control present"
+                    })
+                } else if (eachHour.hour > moment().format("HHHH")) {
+                    textArea.attr({
+                        "class": "form-control future"
+                    })
+                }
+
+
+
+                $('.saveBtn').on('click', function (event) {
+                    event.preventDefault();
+                    let saveIndex = $(this).parent(".input-group-append").siblings(".form-control").val();
+                    localStorage.setItem('my_taskList', JSON.stringify(saveIndex));
+                });
+
+
+
+                // workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
+
+                //console.log(saveIndex);
+                // console.log(event.target);
+                console.log("UPPERCASE", $(this).parent(".input-group-append").siblings(".form-control").val());
+            });
+
+
+
+
     });
-        
-        
-
-        //placing object workDay into local Storage
-        localStorage.setItem('my_workDay', JSON.stringify(taskList));
-
-        //
-        $('.saveBtn').on('click', function (event) {
-            event.preventDefault();
-            let saveIndex = $(this).siblings(".taskDescription").children(".future").attr('id');
-            workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
-            console.log(saveIndex);
-        });
-
-       
-
-        
 
 
+console.log($('.form-control').val());
 
 
-    
-});
 
 
 
