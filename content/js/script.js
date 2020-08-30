@@ -78,8 +78,16 @@ $(document).ready(
         getCurrentDay();
 
 
-        //create the visual, dynamic grid for the daily planner
+        //displays any items in Local storage
 
+        function displayItem() {
+            let storedItem = JSON.parse(localStorage.getItem("my_taskList"));
+            $("textArea").html(storedItem);
+
+        }
+        displayItem(mytaskList);
+
+        //create the visual, dynamic grid for the daily planner
 
         workDay.forEach(
             function (eachHour) {
@@ -106,7 +114,8 @@ $(document).ready(
                 const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
                 $(actButton).append(saveIcon);
 
-
+                //displays any item aleady in local storage
+                
 
                 //tests the time and applies formatting to the cell based on the time
 
@@ -133,6 +142,8 @@ $(document).ready(
                 });
 
 
+                console.log(storedItem);
+
 
                 //testing code section:
 
@@ -142,8 +153,7 @@ $(document).ready(
                 //console.log("where", $(this).parent(".input-group-append").siblings(".form-control").val());
             });
 
-
-
+       
 
     });
 
