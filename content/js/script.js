@@ -148,12 +148,12 @@ $(document).ready(
 
         //displays any items in Local storage
 
-        function displayItem() {
+     /*   function displayItem() {
             let storedItem = JSON.parse(localStorage.getItem("my_taskList"));
             $("textArea").html(storedItem);
 
         }
-        displayItem(mytaskList);
+        displayItem(mytaskList);*/
 
     });
 
