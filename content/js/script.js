@@ -137,9 +137,11 @@ $(document).ready(function () {
 
         taskList.push(workDay);
 
+
+        //placing object workDay into local Storage
         localStorage.setItem('my_workDay', JSON.stringify(taskList));
 
-
+        //
         $('.saveBtn').on('click', function (event) {
             event.preventDefault();
             let saveIndex = $(this).siblings(".taskDescription").children(".future").attr('id');
