@@ -52,8 +52,6 @@ let workDay = [
 
 ]
 
-
-
 const containerEl = document.getElementById('#container');
 const initRow = document.getElementsByClassName("row");
 
@@ -77,9 +75,7 @@ $(document).ready(
 
         getCurrentDay();
 
-
-       
-
+              
         //create the visual, dynamic grid for the daily planner
 
         workDay.forEach(
@@ -134,16 +130,7 @@ $(document).ready(
                     localStorage.setItem('my_taskList', JSON.stringify(saveIndex));
                 });
 
-
-               // console.log(storedItem);
-
-
-                //testing code section:
-
-                //console.log(saveIndex);
-                // console.log(event.target);
-
-                //console.log("where", $(this).parent(".input-group-append").siblings(".form-control").val());
+                            
             });
 
         //displays any items in Local storage
@@ -158,7 +145,6 @@ $(document).ready(
     });
 
 
-//console.log($('.form-control').val());
 
 
 
