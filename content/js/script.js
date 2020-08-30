@@ -135,7 +135,7 @@ $(document).ready(
                 });
 
 
-                console.log(storedItem);
+               // console.log(storedItem);
 
 
                 //testing code section:
