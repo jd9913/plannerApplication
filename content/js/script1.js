@@ -81,15 +81,15 @@ $(document).ready(function () {
     //place the current day/date in the header field
 
     getCurrentDay();
-
+    eachHour();
       
     //create the visual, dynamic grid for the daily planner
 
 
-    workDay.forEach(function (eachHour) {
+    function eachHour() {
         
+        for (let i = 0; i < workDay.length; i++) {
 
-            
             //These create the row and place the time and save buttons in the appropriate places for each row.
             const begInput = $("<div>").attr({ "class": "input-group" });
             $(initRow).append(begInput);
@@ -113,8 +113,10 @@ $(document).ready(function () {
             const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
             $(actButton).append(saveIcon);
 
-        
+            console.log(workDay[i].taskArea);
+        }
   
+        
 
         //tests the time and applies formatting to the cell based on the time
 
@@ -133,38 +135,28 @@ $(document).ready(function () {
         }
 
     
-        //allows values to be placed within the property workDay.taskItem
-
-        function accessTaskItem() {
-
-            for (let i = 0; i < workDay.length; i++) {
+              
 
                 workDay.taskItem = $(textArea).val().trim();
-                taskList.push(workDay);               
-            }
-            console.log(workDay[i].taskArea);
-        }
+                taskList.push(workDay);
+            
+            
 
-        accessTaskItem();
-        
-    });
-        
-        
 
-        //placing object workDay into local Storage
-        localStorage.setItem('my_workDay', JSON.stringify(taskList));
+            //placing object workDay into local Storage
+            localStorage.setItem('my_workDay', JSON.stringify(taskList));
 
-        //
-        $('.saveBtn').on('click', function (event) {
-            event.preventDefault();
-            let saveIndex = $(this).siblings(".taskDescription").children(".future").attr('id');
-            workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
-            console.log(saveIndex);
-        });
+            //
+            $('.saveBtn').on('click', function (event) {
+                event.preventDefault();
+                let saveIndex = $(this).siblings(".taskDescription").children(".future").attr('id');
+                workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
+                console.log(saveIndex);
+            });
 
-       
 
-        
+
+        };    
 
 
 
