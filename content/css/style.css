@@ -5,15 +5,18 @@ body {
 }
 
 
-
-textarea{
-  background: transparent;
-  border: none;
-  align-items: center;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
+.input-group-text{
+    width: 100%;
 }
+
+.note{
+    font-size: .6em;
+    font-style: italic;
+    font-weight: lighter;
+    text-align: left;
+    align-content: end;
+}
+
 
 .jumbotron {
   text-align: center;
@@ -27,10 +30,7 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-block{
-  text-align: center;
-  border-radius: 15px;
-}
+
 
 .row {
   white-space: pre-wrap;
@@ -39,7 +39,6 @@ textarea{
   border-radius:10em;
 
 }
-
 
 
 .hour {
