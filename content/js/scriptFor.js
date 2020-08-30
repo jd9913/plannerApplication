@@ -62,7 +62,7 @@ let workDay = [
 const containerEl = document.getElementById('#container');
 const initRow = document.getElementsByClassName("row");
 let taskList = JSON.parse(localStorage.getItem("my_workDay")) || [];
-
+let textArea=workDay.taskItem;
 
 $(document).ready(function () {
 
@@ -97,13 +97,12 @@ $(document).ready(function () {
             const eachRow = $("<div>").attr({ "class": "input-group-prepend col-sm" });
             $(begInput).append(eachRow);
 
-            const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(eachHour.hour);
+            const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(workDay.hour);
             $(eachRow).append(eachTime);
 
             let textArea = $('<textarea>').attr({ "class": "form-control" });
             $(eachTime).append(textArea);
-
-
+           
             const saveBtn = $('<div>').attr({ "class": "input-group-append" });
             $(eachTime).append(saveBtn);
 
@@ -113,8 +112,11 @@ $(document).ready(function () {
             const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
             $(actButton).append(saveIcon);
 
-            console.log(workDay[i].taskArea);
-        }
+          
+workDay[i].taskItem=textArea;
+
+console.log(workDay[i].taskItem);
+        
   
         
 
@@ -134,10 +136,10 @@ $(document).ready(function () {
             })
         }
 
-    
+    };
               
 
-                workDay.taskItem = $(textArea).val().trim();
+               // workDay.taskItem = $(textArea)
                 taskList.push(workDay);
             
             
@@ -149,9 +151,8 @@ $(document).ready(function () {
             //
             $('.saveBtn').on('click', function (event) {
                 event.preventDefault();
-                let saveIndex = $(this).siblings(".taskDescription").children(".future").attr('id');
-                workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
-                console.log(saveIndex);
+                workDay.taskItem = $(this).siblings(".taskDescription").children("future").val();
+                console.log(workDay.taskItem);
             });
 
 

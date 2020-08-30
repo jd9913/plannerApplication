@@ -103,7 +103,6 @@ $(document).ready(function () {
             let textArea = $('<textarea>').attr({ "class": "form-control" });
             $(eachTime).append(textArea);
 
-
             const saveBtn = $('<div>').attr({ "class": "input-group-append" });
             $(eachTime).append(saveBtn);
 
@@ -135,17 +134,12 @@ $(document).ready(function () {
     
         //allows values to be placed within the property workDay.taskItem
 
-        function accessTaskItem() {
-
-            for (let i = 0; i < workDay.length; i++) {
-
-                workDay.taskItem = $(textArea).val().trim();
-                taskList.push(workDay);               
-            }
-            console.log(workDay[i].taskArea);
-        }
-
-        accessTaskItem();
+       /* workDay.taskItem = new function () {
+            this[taskItem] = textArea;
+            taskList.push(workDay.taskItem);   
+        }*/
+                             
+   
         
     });
         
