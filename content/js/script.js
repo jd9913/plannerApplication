@@ -53,15 +53,9 @@ let workDay = [
 ]
 
 
-//Tasks:
-//Ensure that textArea is being stored in the workDay Object as the value to key taskItem;
-//create the event for the save button to trigger the save function to local storage.
-//test to ensure that it works.
-
 
 const containerEl = document.getElementById('#container');
 const initRow = document.getElementsByClassName("row");
-
 
 
 $(document).ready(
@@ -130,7 +124,7 @@ $(document).ready(
                     })
                 }
 
-
+                //saves the text area to local storage
 
                 $('.saveBtn').on('click', function (event) {
                     event.preventDefault();
@@ -140,11 +134,12 @@ $(document).ready(
 
 
 
-                // workDay[saveIndex].taskItem = $(this).siblings(".taskDescription").children("future").val();
+                //testing code section:
 
                 //console.log(saveIndex);
                 // console.log(event.target);
-                console.log("UPPERCASE", $(this).parent(".input-group-append").siblings(".form-control").val());
+
+                //console.log("where", $(this).parent(".input-group-append").siblings(".form-control").val());
             });
 
 
@@ -153,7 +148,7 @@ $(document).ready(
     });
 
 
-console.log($('.form-control').val());
+//console.log($('.form-control').val());
 
 
 
