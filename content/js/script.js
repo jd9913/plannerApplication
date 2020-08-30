@@ -78,14 +78,7 @@ $(document).ready(
         getCurrentDay();
 
 
-        //displays any items in Local storage
-
-        function displayItem() {
-            let storedItem = JSON.parse(localStorage.getItem("my_taskList"));
-            $("textArea").html(storedItem);
-
-        }
-        displayItem(mytaskList);
+       
 
         //create the visual, dynamic grid for the daily planner
 
@@ -153,7 +146,14 @@ $(document).ready(
                 //console.log("where", $(this).parent(".input-group-append").siblings(".form-control").val());
             });
 
-       
+        //displays any items in Local storage
+
+        function displayItem() {
+            let storedItem = JSON.parse(localStorage.getItem("my_taskList"));
+            $("textArea").html(storedItem);
+
+        }
+        displayItem(mytaskList);
 
     });
 
