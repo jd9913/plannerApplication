@@ -62,7 +62,7 @@ let workDay = [
 const containerEl = document.getElementById('#container');
 const initRow = document.getElementsByClassName("row");
 let taskList = JSON.parse(localStorage.getItem("my_workDay")) || [];
-let taskArea = workDay.taskItem;
+
 
 $(document).ready(function () {
 
@@ -82,35 +82,39 @@ $(document).ready(function () {
 
     getCurrentDay();
 
-
+      
     //create the visual, dynamic grid for the daily planner
 
 
     workDay.forEach(function (eachHour) {
+        for (let i = 0; i < workDay.length; i++) {
 
-        //These create the row and place the time and save buttons in the appropriate places for each row.
-        const begInput = $("<div>").attr({ "class": "input-group" });
-        $(initRow).append(begInput);
+            console.log(workDay[i].taskArea);
 
-        const eachRow = $("<div>").attr({ "class": "input-group-prepend col-sm" });
-        $(begInput).append(eachRow);
+            //These create the row and place the time and save buttons in the appropriate places for each row.
+            const begInput = $("<div>").attr({ "class": "input-group" });
+            $(initRow).append(begInput);
 
-        const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(eachHour.hour);
-        $(eachRow).append(eachTime);
+            const eachRow = $("<div>").attr({ "class": "input-group-prepend col-sm" });
+            $(begInput).append(eachRow);
 
-        textArea = $('<textarea>').attr({ "class": "form-control" });
-        $(eachTime).append(textArea);
-        
+            const eachTime = $("<span>").attr({ "class": "input-group-text justify-content-left" }).text(eachHour.hour);
+            $(eachRow).append(eachTime);
 
-        const saveBtn = $('<div>').attr({ "class": "input-group-append" });
-        $(eachTime).append(saveBtn);
+            let textArea = $('<textarea>').attr({ "class": "form-control" });
+            $(eachTime).append(textArea);
 
-        const actButton = $('<button>').attr({ "class": "btn saveBtn" })
-        $(saveBtn).append(actButton);
 
-        const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
-        $(actButton).append(saveIcon);
+            const saveBtn = $('<div>').attr({ "class": "input-group-append" });
+            $(eachTime).append(saveBtn);
 
+            const actButton = $('<button>').attr({ "class": "btn saveBtn" })
+            $(saveBtn).append(actButton);
+
+            const saveIcon = $('<i>').attr({ "class": "fas fa-save" });
+            $(actButton).append(saveIcon);
+
+        }
 
         //tests the time and applies formatting to the cell based on the time
 
@@ -127,16 +131,13 @@ $(document).ready(function () {
                 "class": "form-control future"
             })
         }
-    
 
-
-
-
+     
 
         workDay.taskItem = $(textArea).val().trim();
 
         taskList.push(workDay);
-
+        
 
         //placing object workDay into local Storage
         localStorage.setItem('my_workDay', JSON.stringify(taskList));
